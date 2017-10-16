@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlen.c                                           :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeilles <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/12 00:03:40 by mbeilles          #+#    #+#             */
-/*   Updated: 2017/04/12 00:05:24 by mbeilles         ###   ########.fr       */
+/*   Created: 2017/04/11 09:51:37 by rolevy            #+#    #+#             */
+/*   Updated: 2017/04/12 05:38:47 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-size_t	ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
-	size_t	i;
+	size_t counter;
+	size_t i;
 
+	counter = 0;
 	i = 0;
-	while (str[i])
+	while (str[i] != '\0')
+	{
+		counter++;
 		i++;
-	return (i);
+	}
+	return (counter);
 }

@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strdel.c                                           :+:      :+:    :+:   */
+/*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeilles <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/13 18:31:05 by mbeilles          #+#    #+#             */
-/*   Updated: 2017/04/14 13:34:24 by mbeilles         ###   ########.fr       */
+/*   Created: 2017/04/12 18:30:32 by rolevy            #+#    #+#             */
+/*   Updated: 2017/04/12 21:11:33 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include <stdlib.h>
-#include "libft.h"
+#include <string.h>
 
-void	ft_strdel(char **as)
+void	ft_strdel(char **ap)
 {
-	free(*as);
-	*as = NULL;
+	if (!(ap))
+		return ;
+	free(*ap);
+	*ap = NULL;
 }

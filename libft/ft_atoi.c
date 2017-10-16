@@ -3,35 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeilles <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/18 05:36:13 by mbeilles          #+#    #+#             */
-/*   Updated: 2017/04/16 01:26:50 by mbeilles         ###   ########.fr       */
+/*   Created: 2017/03/09 09:50:00 by rolevy            #+#    #+#             */
+/*   Updated: 2017/04/11 12:12:57 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_atoi(char const *str)
+int		ft_atoi(const char *str)
 {
-	long			i;
-	unsigned long	nbr;
-	int				negative;
+	int s;
+	int number;
 
-	i = 0;
-	nbr = 0;
-	negative = 1;
-	while ((str[i] == '\n') || (str[i] == '\t') || (str[i] == '\v') ||
-			(str[i] == ' ') || (str[i] == '\f') || (str[i] == '\r'))
-		i++;
-	if (str[i] == '-')
-		negative = -1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while ((unsigned char)str[i] && (unsigned char)str[i] >= '0' &&
-		(unsigned char)str[i] <= '9')
+	s = 1;
+	number = 0;
+	while (*str == ' ' || *str == '\t' || *str == '\n' ||
+			*str == '\v' || *str == '\r' || *str == '\f')
+		str++;
+	if (*str == '-')
+		s *= -1;
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
 	{
-		nbr *= 10;
-		nbr += (long)((unsigned char)str[i] - '0');
-		i++;
+		number = (number * 10) + (*str - '0');
+		str++;
 	}
-	return ((int)(nbr * negative));
+	return ((number * s));
 }

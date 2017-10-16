@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   striter.c                                          :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeilles <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/13 18:35:39 by mbeilles          #+#    #+#             */
-/*   Updated: 2017/04/13 18:39:03 by mbeilles         ###   ########.fr       */
+/*   Created: 2017/04/12 19:16:34 by rolevy            #+#    #+#             */
+/*   Updated: 2017/04/27 15:26:27 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
+#include <string.h>
 
 void	ft_striter(char *s, void (*f)(char *))
 {
-	size_t	i;
-	size_t	j;
+	int i;
 
+	if (!s || !f)
+		return ;
 	i = 0;
-	j = ft_strlen(s);
-	while (i < j)
+	while (s[i])
 	{
 		f(&s[i]);
 		i++;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strnew.c                                           :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeilles <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/13 18:26:37 by mbeilles          #+#    #+#             */
-/*   Updated: 2017/04/13 18:33:39 by mbeilles         ###   ########.fr       */
+/*   Created: 2017/04/12 18:39:07 by rolevy            #+#    #+#             */
+/*   Updated: 2017/04/22 03:09:39 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 
 char	*ft_strnew(size_t size)
 {
-	char	*s;
+	char	*tab;
 
-	if ((s = (char *)malloc(size + 1)) == NULL)
+	tab = (char *)malloc(sizeof(char) * (size + 1));
+	if (!(tab))
 		return (NULL);
-	ft_bzero(s, size + 1);
-	return (s);
+	ft_bzero(tab, size + 1);
+	return (tab);
 }

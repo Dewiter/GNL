@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memalloc.c                                         :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeilles <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/13 17:52:28 by mbeilles          #+#    #+#             */
-/*   Updated: 2017/04/13 17:56:52 by mbeilles         ###   ########.fr       */
+/*   Created: 2017/04/12 18:27:31 by rolevy            #+#    #+#             */
+/*   Updated: 2017/04/16 02:23:11 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdlib.h>
-#include "libft.h"
 
 void	*ft_memalloc(size_t size)
 {
-	void	*tmp;
+	char	*tab;
+	size_t	i;
 
-	if ((tmp = malloc(size)) == NULL)
+	tab = (void *)malloc(sizeof(void) * size);
+	if (!(tab))
 		return (NULL);
-	ft_bzero(tmp, size);
-	return (tmp);
+	i = 0;
+	while (i < size)
+	{
+		tab[i] = 0;
+		i++;
+	}
+	return (tab);
 }

@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memchr.c                                           :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeilles <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/11 23:22:02 by mbeilles          #+#    #+#             */
-/*   Updated: 2017/04/12 01:31:37 by mbeilles         ###   ########.fr       */
+/*   Created: 2017/04/11 15:44:33 by rolevy            #+#    #+#             */
+/*   Updated: 2017/04/24 16:28:59 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void				*ft_memchr(const void *str, int c, size_t n)
 {
+	unsigned char	*tab;
 	size_t			i;
-	unsigned char	*tmp;
 
 	i = 0;
-	tmp = (unsigned char*)s;
+	tab = (unsigned char *)str;
 	while (i < n)
 	{
-		if ((unsigned char)c == tmp[i])
-			return (tmp + i);
+		if (tab[i] == (unsigned char)c)
+			return (tab + i);
 		i++;
 	}
-	return (NULL);
+	return (0);
 }

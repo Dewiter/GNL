@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memset.c                                           :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeilles <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/11 20:18:03 by mbeilles          #+#    #+#             */
-/*   Updated: 2017/04/12 01:31:35 by mbeilles         ###   ########.fr       */
+/*   Created: 2017/04/11 09:55:46 by rolevy            #+#    #+#             */
+/*   Updated: 2017/04/11 20:11:05 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void	*ft_memset(void *b, int c, size_t len)
+void				*ft_memset(void *str, int c, size_t n)
 {
+	unsigned char	*tab;
 	size_t			i;
-	unsigned char	*tmp;
 
 	i = 0;
-	tmp = (unsigned char*)b;
-	while (i < len)
+	if (n == 0)
+		return (str);
+	tab = (unsigned char *)str;
+	while (i < n)
 	{
-		tmp[i] = (unsigned char)c;
+		tab[i] = (unsigned char)c;
 		i++;
 	}
-	return (b);
+	return (tab);
 }

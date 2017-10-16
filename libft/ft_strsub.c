@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeilles <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/13 20:06:33 by mbeilles          #+#    #+#             */
-/*   Updated: 2017/04/14 13:46:57 by mbeilles         ###   ########.fr       */
+/*   Created: 2017/04/13 03:23:05 by rolevy            #+#    #+#             */
+/*   Updated: 2017/04/27 16:06:31 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 #include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+char		*ft_strsub(char const *s, unsigned int start, size_t len)
 {
 	char	*tab;
 	size_t	i;
 
-	if ((tab = (char *)malloc(len + 1)) == NULL)
+	if (!s)
+		return (NULL);
+	tab = (char *)malloc(sizeof(char) * (len + 1));
+	if (!(tab))
 		return (NULL);
 	i = 0;
 	while (i < len)

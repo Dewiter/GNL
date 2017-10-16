@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strmap.c                                           :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeilles <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/13 18:42:48 by mbeilles          #+#    #+#             */
-/*   Updated: 2017/04/14 13:41:06 by mbeilles         ###   ########.fr       */
+/*   Created: 2017/04/12 19:37:50 by rolevy            #+#    #+#             */
+/*   Updated: 2017/04/27 15:25:51 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
 #include "libft.h"
+#include <stdlib.h>
+#include <string.h>
 
-char	*ft_strmap(char const *s, char (*f)(char))
+char		*ft_strmap(char const *s, char (*f)(char))
 {
-	char			*map;
-	unsigned int	i;
-	unsigned int	j;
+	int		i;
+	char	*tab;
+	size_t	size;
 
-	if ((map = ft_strdup(s)) == NULL)
+	if (!s || !f)
 		return (NULL);
-	j = ft_strlen(map);
 	i = 0;
-	while (i < j)
+	size = ft_strlen(s);
+	tab = ft_strnew(size);
+	if (!(tab))
+		return (NULL);
+	while (s[i])
 	{
-		map[i] = f(map[i]);
+		tab[i] = f(s[i]);
 		i++;
 	}
-	return (map);
+	return (tab);
 }

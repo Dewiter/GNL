@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strnstr.c                                          :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeilles <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/13 17:17:55 by mbeilles          #+#    #+#             */
-/*   Updated: 2017/04/14 13:32:21 by mbeilles         ###   ########.fr       */
+/*   Created: 2017/04/11 16:16:19 by rolevy            #+#    #+#             */
+/*   Updated: 2017/04/22 03:02:55 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
+#include <string.h>
 
-char	*ft_strnstr(const char *str, const char *to_find, size_t len)
+char		*ft_strnstr(const char *str, const char *to_find, size_t n)
 {
-	size_t	tf_len;
+	size_t	i;
+	size_t	j;
+	size_t	len;
 
-	if ((tf_len = ft_strlen(to_find)) == 0)
-		return (char *)str;
-	while (*str && tf_len <= len)
+	i = 0;
+	len = ft_strlen(to_find);
+	if (!*to_find && str == to_find)
+		return ((char *)str);
+	while (str[i] != '\0' && len + i <= n)
 	{
-		if ((*str == *to_find) &&
-				(ft_strncmp(str, to_find, tf_len) == 0))
-			return (char *)(str);
-		str++;
-		len--;
+		j = 0;
+		while (str[i + j] == to_find[j] && str[i + j] && to_find[j])
+			j++;
+		if (!(to_find[j]))
+			return ((char *)str + i);
+		i++;
 	}
-	return (NULL);
+	return (0);
 }

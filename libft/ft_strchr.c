@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strchr.c                                           :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeilles <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/13 17:03:28 by mbeilles          #+#    #+#             */
-/*   Updated: 2017/04/14 17:31:48 by mbeilles         ###   ########.fr       */
+/*   Created: 2017/04/11 10:21:41 by rolevy            #+#    #+#             */
+/*   Updated: 2017/04/18 17:50:25 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-char	*ft_strchr(const char *s, int c)
+char		*ft_strchr(const char *str, int c)
 {
-	char	*tmp;
+	size_t	i;
+	char	*tab;
 
-	tmp = (char *)s;
-	while (*tmp)
+	i = 0;
+	tab = (char *)str;
+	while (tab[i] != c)
 	{
-		if (*tmp == (char)c)
-			return (tmp);
-		tmp++;
+		if (tab[i] == '\0')
+			return (NULL);
+		i++;
 	}
-	if ((char)c == '\0')
-		return (tmp);
-	return (NULL);
+	return (tab + i);
 }

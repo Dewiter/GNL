@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memccpy.c                                          :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeilles <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/11 22:15:05 by mbeilles          #+#    #+#             */
-/*   Updated: 2017/04/12 01:26:14 by mbeilles         ###   ########.fr       */
+/*   Created: 2017/04/11 12:10:21 by rolevy            #+#    #+#             */
+/*   Updated: 2017/04/24 16:25:53 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
+#include <stdlib.h>
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+void				*ft_memccpy(void *str1, const void *str2, int c, size_t n)
 {
+	unsigned char	*src;
+	unsigned char	*dest;
 	size_t			i;
-	unsigned char	*a;
-	unsigned char	*b;
 
 	i = 0;
-	a = (unsigned char*)dst;
-	b = (unsigned char*)src;
+	dest = (unsigned char *)str1;
+	src = (unsigned char *)str2;
 	while (i < n)
 	{
-		a[i] = b[i];
-		if ((unsigned char)c == b[i])
-			return (a + i + 1);
+		dest[i] = src[i];
+		if (src[i] == (unsigned char)c)
+			return (dest + i + 1);
 		i++;
 	}
 	return (NULL);

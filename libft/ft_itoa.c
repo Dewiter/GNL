@@ -3,33 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeilles <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/14 19:41:25 by mbeilles          #+#    #+#             */
-/*   Updated: 2017/04/16 09:40:00 by mbeilles         ###   ########.fr       */
+/*   Created: 2017/04/16 03:15:01 by rolevy            #+#    #+#             */
+/*   Updated: 2017/04/22 08:14:08 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <string.h>
 #include "libft.h"
 
-char	*ft_itoa(int n)
+static int		digit_size(int n)
 {
-	unsigned int	size;
-	char			*s;
-	int				sign;
+	size_t digits;
+
+	digits = 1;
+	while ((n /= 10))
+		digits++;
+	return (digits);
+}
+
+char			*ft_itoa(int n)
+{
+	size_t	digits;
+	int		sign;
+	char	*tab;
 
 	sign = n >= 0 ? 0 : 1;
-	size = ft_get_pow(n, 10) + 1 + sign;
-	if (!(s = (char*)malloc(sizeof(char) * (size))))
+	digits = digit_size(n) + sign;
+	if ((tab = (char *)malloc(digits + 1)) == NULL)
 		return (NULL);
-	s[size] = 0;
-	while (size--)
+	tab[digits] = '\0';
+	while (digits--)
 	{
-		s[size] = n >= 0 ? '0' + n % 10 : '0' - n % 10;
+		tab[digits] = n >= 0 ? '0' + n % 10 : '0' - n % 10;
 		n /= 10;
 	}
 	if (sign)
-		*s = '-';
-	return (s);
+		*tab = '-';
+	return (tab);
 }

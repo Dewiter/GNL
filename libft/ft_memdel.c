@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memdel.c                                           :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeilles <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/13 17:57:25 by mbeilles          #+#    #+#             */
-/*   Updated: 2017/04/14 13:34:04 by mbeilles         ###   ########.fr       */
+/*   Created: 2017/04/12 18:30:32 by rolevy            #+#    #+#             */
+/*   Updated: 2017/04/12 18:43:45 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include <stdlib.h>
-#include "libft.h"
+#include <string.h>
 
 void	ft_memdel(void **ap)
 {
+	if (!(ap))
+		return ;
 	free(*ap);
 	*ap = NULL;
 }

@@ -3,40 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeilles <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/19 23:33:24 by mbeilles          #+#    #+#             */
-/*   Updated: 2017/04/19 23:42:27 by mbeilles         ###   ########.fr       */
+/*   Created: 2017/04/19 16:32:08 by rolevy            #+#    #+#             */
+/*   Updated: 2017/04/24 15:38:17 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
+#include <stdlib.h>
+#include <string.h>
 
-static void		del_elem(void *elem, size_t size)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	(void)size;
-	free(elem);
-	elem = NULL;
-}
+	t_list	*tab;
 
-t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
-{
-	t_list *current;
-	t_list *elem;
-	t_list *new_list;
-
-	new_list = NULL;
-	current = lst;
-	while (current)
+	tab = (t_list *)malloc(sizeof(t_list));
+	if (!tab)
+		return (NULL);
+	if (lst)
 	{
-		if (!(elem = f(current)))
-		{
-			ft_lstdel(&new_list, &del_elem);
-			return (NULL);
-		}
-		ft_lstadd(&new_list, elem);
-		current = current->next;
+		tab = f(lst);
+		tab->next = ft_lstmap(lst->next, f);
+		return (tab);
 	}
-	return (ft_lstinvert_iter(&new_list));
+	return (NULL);
 }

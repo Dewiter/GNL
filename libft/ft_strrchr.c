@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strrchr.c                                          :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeilles <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/13 17:09:58 by mbeilles          #+#    #+#             */
-/*   Updated: 2017/04/14 19:21:00 by mbeilles         ###   ########.fr       */
+/*   Created: 2017/04/11 10:32:24 by rolevy            #+#    #+#             */
+/*   Updated: 2017/04/18 18:02:34 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char		*ft_strrchr(const char *str, int c)
 {
-	char *save;
+	char	*tab;
 
-	save = (char *)NULL;
-	while (*s)
+	tab = (char *)str + ft_strlen(str);
+	while (*tab != c)
 	{
-		if (*s == c)
-			save = (char *)s;
-		s++;
+		if (tab == str)
+			return (NULL);
+		tab--;
 	}
-	if (*s == c)
-		save = (char *)s;
-	return (save);
+	return (tab);
 }
